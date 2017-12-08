@@ -138,7 +138,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		setJMenuBar(barMenu);
 		
 		//datos universiadaes a las que se puede inscribir
-				JPanel pnlDatos = new JPanel();
+				/*JPanel pnlDatos = new JPanel();
 				pnlDatos.setLayout(new GridBagLayout());
 				pnlDatos.setBorder(BorderFactory.createTitledBorder("Universidades"));
 				
@@ -167,7 +167,7 @@ public class MiVentana extends JFrame implements ActionListener {
 				gb.gridx = 0;
 				pnlDatos.add(new JLabel("-Economía"), gb);
 				
-				c.add(pnlDatos,BorderLayout.EAST);
+				c.add(pnlDatos,BorderLayout.EAST);*/
 	}
 	
 	@Override
