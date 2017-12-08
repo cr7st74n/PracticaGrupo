@@ -12,28 +12,9 @@ import modelo.Pais;
 import modelo.Revista;
 
 public class GestionDatosRevi {
-	private List<Revista> revistas;
-	private List<Pais> paises;
-	private List<Empresa> empresas;
-	private List<Atleta> atletas;
-	private List<FichaInscripcion> fichas;
-	private List<Medico> medicos;
-
+private String pathPersona="Datos/Revistas.txt";
 	public GestionDatosRevi() {
 		
 	}
-	
-	public GestionDatosRevi(List<Revista> revistas, List<Pais> paises, List<Empresa> empresas, List<Atleta> atletas,
-			List<FichaInscripcion> fichas, List<Medico> medicos) {
-		super();
-		this.revistas = revistas;
-		this.paises = paises;
-		this.empresas = empresas;
-		this.atletas = atletas;
-		this.fichas = fichas;
-		this.medicos = medicos;
-	}
-	
-	
 	
 }
