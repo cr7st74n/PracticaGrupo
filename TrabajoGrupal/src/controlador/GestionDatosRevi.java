@@ -11,7 +11,7 @@ import modelo.Medico;
 import modelo.Pais;
 import modelo.Revista;
 
-public class GestionDatosR {
+public class GestionDatosRevi {
 	private List<Revista> revistas;
 	private List<Pais> paises;
 	private List<Empresa> empresas;
@@ -19,11 +19,11 @@ public class GestionDatosR {
 	private List<FichaInscripcion> fichas;
 	private List<Medico> medicos;
 
-	public GestionDatosR() {
+	public GestionDatosRevi() {
 		
 	}
 	
-	public GestionDatosR(List<Revista> revistas, List<Pais> paises, List<Empresa> empresas, List<Atleta> atletas,
+	public GestionDatosRevi(List<Revista> revistas, List<Pais> paises, List<Empresa> empresas, List<Atleta> atletas,
 			List<FichaInscripcion> fichas, List<Medico> medicos) {
 		super();
 		this.revistas = revistas;

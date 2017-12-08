@@ -17,37 +17,40 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import controlador.GestionDatosR;
+import controlador.GestionDatosRevi;
 
 public class MiVentana extends JFrame implements ActionListener {
 
 	private JDesktopPane escritorio;
-	private GestionDatosR gd;
+	private GestionDatosRevi gd;
 	
 	JMenu mnInscripciones;
 	JMenuItem Formulario;
+	JMenuItem listarInscripciones;
 	
 	JMenu mnBusqueda;
 	JMenuItem BusquedaEstudiante;
 	JMenuItem mnCarrera;
 	
 	JMenu mnRevista;
-	JMenuItem agregar;
-	JMenuItem buscarR;
+	JMenuItem agregarR;
+	JMenuItem listarR;
 	
 	JMenu fichaInscripcione;
-	JMenuItem fichas;
+
 	JMenuItem ingresarFichas;
-	JMenuItem buscarfichas;
+	JMenuItem listarfichas;
 	
 	JMenu medico;
 	JMenuItem ingresarMedico;
+	JMenuItem listarMedico;
 	
 	JMenu Atleta;
 	JMenuItem ingresarAtleta;
+	JMenuItem listarAtleta;
 	
 	public MiVentana() {
-		this.gd = new GestionDatosR();
+		this.gd = new GestionDatosRevi();
 		
 		initComponents();
 	}
@@ -67,10 +70,16 @@ public class MiVentana extends JFrame implements ActionListener {
 		Formulario = new JMenuItem("Ingresar pais");
 		Formulario.addActionListener(this);
 		Formulario.setActionCommand("mnFor");
+		
+		listarInscripciones = new JMenuItem("Listar pais");
+		listarInscripciones.addActionListener(this);
+		listarInscripciones.setActionCommand("mnFor");
 		mnInscripciones.add(Formulario);
+		mnInscripciones.add(listarInscripciones);
+
 		
 		mnBusqueda = new JMenu("Empresa");
-		BusquedaEstudiante = new JMenuItem("Buscar Empresas");
+		BusquedaEstudiante = new JMenuItem("Ingresar Empresas");
 		BusquedaEstudiante.addActionListener(this);
 		BusquedaEstudiante.setActionCommand("mnEst");
 		mnCarrera = new JMenuItem("Listar empresas");
@@ -80,28 +89,51 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnBusqueda.add(mnCarrera);
 		
 		mnRevista  = new JMenu("Revista");
-		agregar = new JMenuItem("Agregar");
-		buscarR = new JMenuItem("Buscar");
-		agregar.addActionListener(this);
-		agregar.setActionCommand("mnEsp");
-		buscarR.addActionListener(this);
-		buscarR.setActionCommand("mnIng");
-		mnRevista.add(buscarR);
-		mnRevista.add(agregar);
+		agregarR = new JMenuItem("Ingresar Revista");
+		listarR = new JMenuItem("Listar Revista");
+		agregarR.addActionListener(this);
+		agregarR.setActionCommand("mnEsp");
+		listarR.addActionListener(this);
+		listarR.setActionCommand("mnIng");
+		mnRevista.add(listarR);
+		mnRevista.add(agregarR);
 		
-		fichaInscripcione  = new JMenu("Revista");
-		agregar = new JMenuItem("Agregar");
-		buscarR = new JMenuItem("Buscar");
-		agregar.addActionListener(this);
-		agregar.setActionCommand("mnEsp");
-		buscarR.addActionListener(this);
-		buscarR.setActionCommand("mnIng");
-		mnRevista.add(buscarR);
-		mnRevista.add(agregar);
+		fichaInscripcione  = new JMenu("Ingresar fichas");
+		ingresarFichas = new JMenuItem("Agregar Ficha");
+		listarfichas = new JMenuItem("Listar Fichas");
+		ingresarFichas.addActionListener(this);
+		ingresarFichas.setActionCommand("mnEsp");
+		listarfichas.addActionListener(this);
+		listarfichas.setActionCommand("mnIng");
+		fichaInscripcione.add(listarfichas);
+		fichaInscripcione.add(ingresarFichas);
+		
+		medico  = new JMenu("Medico");
+		ingresarMedico = new JMenuItem("Agregar Medico");
+		listarMedico = new JMenuItem("Listar Medico");
+		ingresarMedico.addActionListener(this);
+		ingresarMedico.setActionCommand("mnEsp");
+		listarMedico.addActionListener(this);
+		listarMedico.setActionCommand("mnIng");
+		medico.add(listarMedico);
+		medico.add(ingresarMedico);
+		
+		Atleta  = new JMenu("Atleta");
+		ingresarAtleta = new JMenuItem("Agregar Atleta");
+		listarAtleta = new JMenuItem("Listar Atleta");
+		ingresarAtleta.addActionListener(this);
+		ingresarAtleta.setActionCommand("mnEsp");
+		listarAtleta.addActionListener(this);
+		listarAtleta.setActionCommand("mnIng");
+		Atleta.add(listarAtleta);
+		Atleta.add(ingresarAtleta);
 		
 		barMenu.add(mnRevista);
 		barMenu.add(mnInscripciones);
 		barMenu.add(mnBusqueda);
+		barMenu.add(fichaInscripcione);
+		barMenu.add(medico);
+		barMenu.add(Atleta);
 		
 		setJMenuBar(barMenu);
 		
