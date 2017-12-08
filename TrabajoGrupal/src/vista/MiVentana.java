@@ -21,7 +21,6 @@ import controlador.GestionDatosR;
 
 public class MiVentana extends JFrame implements ActionListener {
 
-	public static Locale localizacion;
 	private JDesktopPane escritorio;
 	private GestionDatosR gd;
 	
