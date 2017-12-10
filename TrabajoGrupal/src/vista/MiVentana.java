@@ -73,7 +73,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		
 		listarInscripciones = new JMenuItem("Listar pais");
 		listarInscripciones.addActionListener(this);
-		listarInscripciones.setActionCommand("mnFor");
+		listarInscripciones.setActionCommand("mnListarP");
 		mnInscripciones.add(Formulario);
 		mnInscripciones.add(listarInscripciones);
 
@@ -81,50 +81,51 @@ public class MiVentana extends JFrame implements ActionListener {
 		mnBusqueda = new JMenu("Empresa");
 		BusquedaEstudiante = new JMenuItem("Ingresar Empresas");
 		BusquedaEstudiante.addActionListener(this);
-		BusquedaEstudiante.setActionCommand("mnEst");
+		BusquedaEstudiante.setActionCommand("mnEmp");
 		mnCarrera = new JMenuItem("Listar empresas");
 		mnCarrera.addActionListener(this);
-		mnCarrera.setActionCommand("mnCar");
+		mnCarrera.setActionCommand("mnListarEm");
 		mnBusqueda.add(BusquedaEstudiante);
 		mnBusqueda.add(mnCarrera);
 		
 		mnRevista  = new JMenu("Revista");
 		agregarR = new JMenuItem("Ingresar Revista");
-		listarR = new JMenuItem("Listar Revista");
 		agregarR.addActionListener(this);
-		agregarR.setActionCommand("mnEsp");
+		agregarR.setActionCommand("mnRev");
+		listarR = new JMenuItem("Listar Revista");
 		listarR.addActionListener(this);
-		listarR.setActionCommand("mnIng");
-		mnRevista.add(listarR);
+		listarR.setActionCommand("mnListarRev");
 		mnRevista.add(agregarR);
+		mnRevista.add(listarR);
+		
 		
 		fichaInscripcione  = new JMenu("Ingresar fichas");
 		ingresarFichas = new JMenuItem("Agregar Ficha");
-		listarfichas = new JMenuItem("Listar Fichas");
 		ingresarFichas.addActionListener(this);
-		ingresarFichas.setActionCommand("mnEsp");
+		ingresarFichas.setActionCommand("mnAFic");
+		listarfichas = new JMenuItem("Listar Fichas");
 		listarfichas.addActionListener(this);
-		listarfichas.setActionCommand("mnIng");
+		listarfichas.setActionCommand("mnListarF");
 		fichaInscripcione.add(listarfichas);
 		fichaInscripcione.add(ingresarFichas);
 		
 		medico  = new JMenu("Medico");
 		ingresarMedico = new JMenuItem("Agregar Medico");
-		listarMedico = new JMenuItem("Listar Medico");
 		ingresarMedico.addActionListener(this);
-		ingresarMedico.setActionCommand("mnEsp");
+		ingresarMedico.setActionCommand("mnAgM");
+		listarMedico = new JMenuItem("Listar Medico");
 		listarMedico.addActionListener(this);
-		listarMedico.setActionCommand("mnIng");
+		listarMedico.setActionCommand("mnListarM");
 		medico.add(listarMedico);
 		medico.add(ingresarMedico);
 		
 		Atleta  = new JMenu("Atleta");
 		ingresarAtleta = new JMenuItem("Agregar Atleta");
-		listarAtleta = new JMenuItem("Listar Atleta");
 		ingresarAtleta.addActionListener(this);
-		ingresarAtleta.setActionCommand("mnEsp");
+		ingresarAtleta.setActionCommand("mnAgAt");
+		listarAtleta = new JMenuItem("Listar Atleta");
 		listarAtleta.addActionListener(this);
-		listarAtleta.setActionCommand("mnIng");
+		listarAtleta.setActionCommand("mnListarAt");
 		Atleta.add(listarAtleta);
 		Atleta.add(ingresarAtleta);
 		
@@ -173,17 +174,17 @@ public class MiVentana extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-//		Formulario f = new Formulario(gd);
+		Formulario f = new Formulario(gd);
 //		Buscar2 bc = new Buscar2(gd);
 //		Buscar be = new Buscar(gd);
 		
 		String comando = e.getActionCommand();
 		
 		switch(comando){
-		case "mnFor":
-//			escritorio.removeAll();
-//			f.setVisible(true);
-//			escritorio.add(f);
+		case "mnRev":
+			escritorio.removeAll();
+			f.setVisible(true);
+			escritorio.add(f);
 			break;
 		case "mnEst":
 //			escritorio.removeAll();
