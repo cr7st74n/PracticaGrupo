@@ -57,7 +57,7 @@ public class MiVentana extends JFrame implements ActionListener {
 	
 	private void initComponents() {
 
-		setSize(950,460);
+		setSize(950,660);
 		setTitle("Gestion de Datos");
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
@@ -174,9 +174,10 @@ public class MiVentana extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Formulario f = new Formulario(gd);
+		FormularioRevi f = new FormularioRevi(gd);
+		LeerRevi be = new LeerRevi(gd);
 //		Buscar2 bc = new Buscar2(gd);
-//		Buscar be = new Buscar(gd);
+		
 		
 		String comando = e.getActionCommand();
 		
@@ -186,10 +187,10 @@ public class MiVentana extends JFrame implements ActionListener {
 			f.setVisible(true);
 			escritorio.add(f);
 			break;
-		case "mnEst":
-//			escritorio.removeAll();
-//			be.setVisible(true);
-//			escritorio.add(be);
+		case "mnListarRev":
+		escritorio.removeAll();
+		be.setVisible(true);
+		escritorio.add(be);
 			break;
 		case "mnCar":
 //			escritorio.removeAll();

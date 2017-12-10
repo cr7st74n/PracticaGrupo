@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -18,26 +20,37 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 
 import controlador.GestionDatosRevi;
 
-public class Formulario extends JInternalFrame implements ActionListener {
+public class FormularioRevi extends JInternalFrame implements ActionListener {
 	
 	private GestionDatosRevi gd;
-	private JTextField txtNombre;
-	private JTextField txtApellido;
-	private JTextField txtCedula;
-	private JTextField txtDireccion;
+	private JTextField txtNombreR;
+	private JTextField txtIdioma;
+	private JTextField txtTarticulo;
+	private JTextField txtNombreAu;
 	private JTextField txtApellidoAu;
+	private JTable tblinscripciones;
 
-	public Formulario(GestionDatosRevi gd) {
+	public FormularioRevi(GestionDatosRevi gd) {
 		this.gd = gd;
-		setSize(750, 400);
+		setSize(950, 700);
 		setVisible(true);
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
+		
+		tblinscripciones = new JTable();
+		tblinscripciones.setModel(new ModelInscripcion());
+		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
+		
+		JPanel scrollPane = new JPanel();
+		scrollPane.setLayout(new GridLayout(1, 1));
+		scrollPane.add(scrollinscripciones);
 
 		JPanel pnlIns = new JPanel();
 		pnlIns.setLayout(new GridBagLayout());
@@ -53,8 +66,8 @@ public class Formulario extends JInternalFrame implements ActionListener {
 		gb.gridy = 0;
 		gb.gridwidth = 2;
 		gb.fill = 2;
-		txtNombre = new JTextField(20);
-		pnlIns.add(txtNombre, gb);
+		txtNombreR = new JTextField(20);
+		pnlIns.add(txtNombreR, gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
@@ -66,8 +79,8 @@ public class Formulario extends JInternalFrame implements ActionListener {
 		gb.gridy = 1;
 		gb.gridwidth = 2;
 		gb.fill = 2;
-		txtApellido = new JTextField(20);
-		pnlIns.add(txtApellido, gb);
+		txtIdioma = new JTextField(20);
+		pnlIns.add(txtIdioma, gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
@@ -77,10 +90,10 @@ public class Formulario extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 2;
-		gb.gridwidth = 5;
+		//gb.gridwidth = 5;
 		gb.fill = 5;
-		txtDireccion = new JTextField(20);
-		pnlIns.add(txtDireccion, gb);
+		txtNombreAu = new JTextField(20);
+		pnlIns.add(txtNombreAu, gb);
 
 		
 		
@@ -94,8 +107,8 @@ public class Formulario extends JInternalFrame implements ActionListener {
 		gb.gridx = 1;
 		gb.gridy = 5;
 		gb.fill = 1;
-		txtCedula = new JTextField(20);
-		pnlIns.add(txtCedula, gb);
+		txtTarticulo = new JTextField(20);
+		pnlIns.add(txtTarticulo, gb);
 
 		
 
@@ -122,10 +135,16 @@ public class Formulario extends JInternalFrame implements ActionListener {
 		btnGuardar.addActionListener(this);
 		btnGuardar.setActionCommand("btnGuardar");
 		
-		pnlBot.add(btnGuardar);
-
+		gb = new GridBagConstraints();
+		gb.gridx = 1;
+		gb.gridy = 9;
+		gb.fill = 1;
+		pnlIns.add(btnGuardar, gb);
+		
+		//pnlBot.add(btnGuardar);
+		pnlIns.add(pnlBot);
 		c.add(pnlIns, BorderLayout.CENTER);
-		c.add(pnlBot, BorderLayout.SOUTH);
+		c.add(scrollPane, BorderLayout.SOUTH);
 
 	}
 
@@ -137,19 +156,36 @@ public class Formulario extends JInternalFrame implements ActionListener {
 
 		switch (comando) {
 		case "btnGuardar":
-		
-			txtNombre.setText("");
-			txtApellido.setText("");
-			txtDireccion.setText("");
-			txtCedula.setText("");
+			
+			try {
+				guardarDatosR();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			txtNombreR.setText("");
+			txtIdioma.setText("");
+			txtNombreAu.setText("");
+			txtTarticulo.setText("");
+			txtApellidoAu.setText("");
+			cargarDatos();
 			break;
 		default:
 			break;
 		}
 	}
 	
-public void guardarDatosR(){
+public void guardarDatosR() throws IOException {
 	
+	gd.newRevista(txtNombreR.getText().toString(), txtIdioma.getText().toString(), txtTarticulo.getText().toString(),
+			txtNombreAu.getText().toString(), txtApellidoAu.getText().toString());
+
 }
+
+public void cargarDatos(){
+	
+	tblinscripciones.setModel(new ModelInscripcion(gd.getRevista()));
+}	
 
 }
