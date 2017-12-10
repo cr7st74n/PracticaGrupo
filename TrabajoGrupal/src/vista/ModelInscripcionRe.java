@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 
 import modelo.Revista;
 
-public class ModelInscripcion extends AbstractTableModel {
+public class ModelInscripcionRe extends AbstractTableModel {
 	
 
 	
@@ -19,12 +19,12 @@ public class ModelInscripcion extends AbstractTableModel {
 	
 	private List<Revista> datos;
 	
-	public ModelInscripcion() {
+	public ModelInscripcionRe() {
 		super();
 		datos = new ArrayList<Revista>();
 	}
 	
-	public ModelInscripcion(List<Revista> datos) {
+	public ModelInscripcionRe(List<Revista> datos) {
 		super();
 		if (datos == null)
 			this.datos = new ArrayList<Revista>();

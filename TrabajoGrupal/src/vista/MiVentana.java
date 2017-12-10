@@ -17,13 +17,19 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
+import controlador.GestionDatosAtle;
+import controlador.GestionDatosEmpr;
+import controlador.GestionDatosPais;
 import controlador.GestionDatosRevi;
 
 public class MiVentana extends JFrame implements ActionListener {
 
 	private JDesktopPane escritorio;
 	private GestionDatosRevi gd;
-	
+	private GestionDatosPais gp;
+	private GestionDatosEmpr ge;
+	private GestionDatosAtle ga;
 	JMenu mnInscripciones;
 	JMenuItem Formulario;
 	JMenuItem listarInscripciones;
@@ -51,7 +57,9 @@ public class MiVentana extends JFrame implements ActionListener {
 	
 	public MiVentana() {
 		this.gd = new GestionDatosRevi();
-		
+		this.gp = new GestionDatosPais();
+		this.ge = new GestionDatosEmpr();
+		this.ga = new GestionDatosAtle();
 		initComponents();
 	}
 	
@@ -176,8 +184,15 @@ public class MiVentana extends JFrame implements ActionListener {
 		
 		FormularioRevi f = new FormularioRevi(gd);
 		LeerRevi be = new LeerRevi(gd);
-//		Buscar2 bc = new Buscar2(gd);
 		
+		FormularioPais p=new FormularioPais(gp);
+		LeerPais pl = new LeerPais(gp);
+		
+		FormularioEmp e1=new FormularioEmp(ge);
+		LeerEmpr le = new LeerEmpr(ge);
+		
+		FormularioAtl a=new FormularioAtl(ga);
+		LeerAtle la = new LeerAtle(ga);
 		
 		String comando = e.getActionCommand();
 		
@@ -192,12 +207,41 @@ public class MiVentana extends JFrame implements ActionListener {
 		be.setVisible(true);
 		escritorio.add(be);
 			break;
-		case "mnCar":
-//			escritorio.removeAll();
-//			bc.setVisible(true);
-//			escritorio.add(bc);
+		case "mnFor":
+			escritorio.removeAll();
+			p.setVisible(true);
+			escritorio.add(p);
 			break;
-		
+			
+		case "mnListarP":
+			escritorio.removeAll();
+			pl.setVisible(true);
+			escritorio.add(pl);
+			break;
+			
+		case "mnEmp":
+			escritorio.removeAll();
+			e1.setVisible(true);
+			escritorio.add(e1);
+			break;
+			
+		case "mnListarEm":
+			escritorio.removeAll();
+			le.setVisible(true);
+			escritorio.add(le);
+			break;
+		case "mnAgAt":
+			escritorio.removeAll();
+			a.setVisible(true);
+			escritorio.add(a);
+			break;
+			
+		case "mnListarAt":
+			escritorio.removeAll();
+			la.setVisible(true);
+			escritorio.add(la);
+			break;
+			
 		default:
 			break;
 		}

@@ -61,18 +61,10 @@ public class LeerRevi extends JInternalFrame implements ActionListener {
 
 	}
 
-	public void cargarDatos() {
-
-		
-	}
 
 	public void cargar() throws Exception {
 
-	
-		
-		
 			txtaInscripciones.setText(gd.leerArchivos().toString());
-		
 
 	}
 

@@ -45,7 +45,7 @@ public class FormularioRevi extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcion());
+		tblinscripciones.setModel(new ModelInscripcionRe());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();
@@ -72,7 +72,7 @@ public class FormularioRevi extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 1;
-		pnlIns.add(new JLabel("Idioma"), gb);
+		pnlIns.add(new JLabel("Idioma de la revista"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -87,17 +87,14 @@ public class FormularioRevi extends JInternalFrame implements ActionListener {
 		gb.gridy = 2;
 		pnlIns.add(new JLabel("Titulo del articulo"), gb);
 
+
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 2;
-		//gb.gridwidth = 5;
-		gb.fill = 5;
-		txtNombreAu = new JTextField(20);
-		pnlIns.add(txtNombreAu, gb);
-
+		gb.fill = 1;
+		txtTarticulo = new JTextField(20);
+		pnlIns.add(txtTarticulo, gb);
 		
-		
-
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 5;
@@ -106,9 +103,10 @@ public class FormularioRevi extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 5;
-		gb.fill = 1;
-		txtTarticulo = new JTextField(20);
-		pnlIns.add(txtTarticulo, gb);
+		//gb.gridwidth = 5;
+		gb.fill = 5;
+		txtNombreAu = new JTextField(20);
+		pnlIns.add(txtNombreAu, gb);
 
 		
 
@@ -185,7 +183,7 @@ public void guardarDatosR() throws IOException {
 
 public void cargarDatos(){
 	
-	tblinscripciones.setModel(new ModelInscripcion(gd.getRevista()));
+	tblinscripciones.setModel(new ModelInscripcionRe(gd.getRevista()));
 }	
 
 }
