@@ -17,7 +17,7 @@ public class GestionDatosEmpr {
 	private List<Empresa> empresas;
 	private List<Departamento> departamentos;
 	private List<Empleado> empleados;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Empresa.txt";
+private String pathPersona="TrabajoGrupal/Datos/Empresa.txt";
 
 public GestionDatosEmpr(List<Empresa> empresas, List<Departamento> departamentos, List<Empleado> empleados, String pathPersona) {
 	super();

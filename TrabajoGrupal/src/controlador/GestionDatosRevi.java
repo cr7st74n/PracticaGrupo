@@ -18,7 +18,7 @@ public class GestionDatosRevi {
 	private List<Revista> revistas;
 	private List<Autor> autores;
 	private List<Articulo> articulos;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Revistas.txt";
+private String pathPersona="TrabajoGrupal/Datos/Revistas.txt";
 	
 
 public GestionDatosRevi(List<Revista> revistas, List<Autor> autores, List<Articulo> articulos, String pathPersona) {

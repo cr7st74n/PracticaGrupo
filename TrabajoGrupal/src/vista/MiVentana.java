@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 
 import controlador.GestionDatosAtle;
 import controlador.GestionDatosEmpr;
+import controlador.GestionDatosFich;
+import controlador.GestionDatosMedi;
 import controlador.GestionDatosPais;
 import controlador.GestionDatosRevi;
 
@@ -30,6 +32,8 @@ public class MiVentana extends JFrame implements ActionListener {
 	private GestionDatosPais gp;
 	private GestionDatosEmpr ge;
 	private GestionDatosAtle ga;
+	private GestionDatosFich gf;
+	private GestionDatosMedi gm;
 	JMenu mnInscripciones;
 	JMenuItem Formulario;
 	JMenuItem listarInscripciones;
@@ -114,8 +118,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		listarfichas = new JMenuItem("Listar Fichas");
 		listarfichas.addActionListener(this);
 		listarfichas.setActionCommand("mnListarF");
-		fichaInscripcione.add(listarfichas);
 		fichaInscripcione.add(ingresarFichas);
+		fichaInscripcione.add(listarfichas);
 		
 		medico  = new JMenu("Medico");
 		ingresarMedico = new JMenuItem("Agregar Medico");
@@ -124,8 +128,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		listarMedico = new JMenuItem("Listar Medico");
 		listarMedico.addActionListener(this);
 		listarMedico.setActionCommand("mnListarM");
-		medico.add(listarMedico);
 		medico.add(ingresarMedico);
+		medico.add(listarMedico);
 		
 		Atleta  = new JMenu("Atleta");
 		ingresarAtleta = new JMenuItem("Agregar Atleta");
@@ -134,8 +138,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		listarAtleta = new JMenuItem("Listar Atleta");
 		listarAtleta.addActionListener(this);
 		listarAtleta.setActionCommand("mnListarAt");
-		Atleta.add(listarAtleta);
 		Atleta.add(ingresarAtleta);
+		Atleta.add(listarAtleta);
 		
 		barMenu.add(mnRevista);
 		barMenu.add(mnInscripciones);
@@ -194,6 +198,12 @@ public class MiVentana extends JFrame implements ActionListener {
 		FormularioAtl a=new FormularioAtl(ga);
 		LeerAtle la = new LeerAtle(ga);
 		
+		FormularioMed m=new FormularioMed(gm);
+		LeerMedi lm = new LeerMedi(gm);
+		
+		FormularioFich F=new FormularioFich(gf);
+		LeerFich lf = new LeerFich(gf);
+		
 		String comando = e.getActionCommand();
 		
 		switch(comando){
@@ -240,6 +250,30 @@ public class MiVentana extends JFrame implements ActionListener {
 			escritorio.removeAll();
 			la.setVisible(true);
 			escritorio.add(la);
+			break;
+			//
+		case "mnAFic":
+			escritorio.removeAll();
+			F.setVisible(true);
+			escritorio.add(F);
+			break;
+			
+		case "mnListarF":
+			escritorio.removeAll();
+			lf.setVisible(true);
+			escritorio.add(lf);
+			break;
+			
+		case "mnAgM":
+			escritorio.removeAll();
+			m.setVisible(true);
+			escritorio.add(m);
+			break;
+			
+		case "mnListarM":
+			escritorio.removeAll();
+			lm.setVisible(true);
+			escritorio.add(lm);
 			break;
 			
 		default:

@@ -17,7 +17,7 @@ public class GestionDatosMedi {
 	private List<Medico> medicos;
 	private List<Consulta> consultas;
 	private List<Paciente> pacientes;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Medico.txt";
+private String pathPersona="TrabajoGrupal/Datos/Medico.txt";
 
 public GestionDatosMedi(List<Medico> medicos, List<Consulta> consultas, List<Paciente> pacientes, String pathPersona) {
 	super();

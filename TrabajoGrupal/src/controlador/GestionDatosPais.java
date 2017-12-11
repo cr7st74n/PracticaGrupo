@@ -20,7 +20,7 @@ public class GestionDatosPais {
 	private List<Pais> paises;
 	private List<Provincia> provincias;
 	private List<Canton> cantones;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Pais.txt";
+private String pathPersona="TrabajoGrupal/Datos/Pais.txt";
 
 public GestionDatosPais(List<Pais> paises, List<Provincia> provincias, List<Canton> cantones, String pathPersona) {
 	super();

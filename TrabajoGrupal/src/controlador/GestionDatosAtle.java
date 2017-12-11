@@ -17,8 +17,8 @@ public class GestionDatosAtle {
 	private List<Atleta> atletas;
 	private List<Competencia> competencias;
 	private List<Resultado> resultados;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Atleta.txt";
-
+private String pathPersona="TrabajoGrupal/Datos/Atleta.txt";
+//estamos ajsja
 public GestionDatosAtle(List<Atleta> atletas, List<Competencia> competencias, List<Resultado> resultados, String pathPersona) {
 	super();
 	this.atletas = atletas;

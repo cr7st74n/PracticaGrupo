@@ -17,7 +17,7 @@ public class GestionDatosFich {
 	private List<FichaInscripcion> fichas;
 	private List<Equipo> equipos;
 	private List<Jugador> jugadores;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/FichaInscripcion.txt";
+private String pathPersona="TrabajoGrupal/Datos/Ficha Inscripcion.txt";
 
 public GestionDatosFich(List<FichaInscripcion> fichas, List<Equipo> equipos, List<Jugador> jugadores, String pathPersona) {
 	super();
