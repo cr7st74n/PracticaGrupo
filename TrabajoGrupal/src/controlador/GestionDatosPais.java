@@ -8,13 +8,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import modelo.Articulo;
-import modelo.Autor;
 import modelo.Canton;
 import modelo.Pais;
 import modelo.Provincia;
-import modelo.Revista;
+
 
 public class GestionDatosPais {
 	private List<Pais> paises;

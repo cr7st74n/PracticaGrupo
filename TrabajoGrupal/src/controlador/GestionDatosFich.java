@@ -17,7 +17,7 @@ public class GestionDatosFich {
 	private List<FichaInscripcion> fichas;
 	private List<Equipo> equipos;
 	private List<Jugador> jugadores;
-private String pathPersona="TrabajoGrupal/Datos/Ficha Inscripcion.txt";
+private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Ficha Inscripcion.txt";
 
 public GestionDatosFich(List<FichaInscripcion> fichas, List<Equipo> equipos, List<Jugador> jugadores, String pathPersona) {
 	super();
@@ -33,8 +33,10 @@ public GestionDatosFich() {
 	jugadores = new ArrayList<Jugador>();
 }
 
-public void newAtleta(String costo,String nombreEq,String nombreCap,String nombreJu,String apellidoJu) throws IOException{
-	FichaInscripcion re=new FichaInscripcion();
+
+public void newFicha(String costo,String nombreEq,String nombreCap,String apellidoJu,String nombreJu) throws IOException{
+	
+	FichaInscripcion re=new FichaInscripcion();	
   re.setCosto(costo);
 	
 		
@@ -64,6 +66,7 @@ try{
 		file.close();
 		
 	}catch(IOException e){
+		
 		e.printStackTrace();    
 	}
 

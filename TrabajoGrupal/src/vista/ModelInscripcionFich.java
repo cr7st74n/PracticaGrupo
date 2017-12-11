@@ -17,19 +17,19 @@ public class ModelInscripcionFich extends AbstractTableModel {
 	public String[] columnas = {"Costo", "Nombre Equipo","Nombre Capitan ","Nombre Jugador","Apellido Jugador"};
 	public Class[] columnasTipos = {String.class, String.class,String.class,String.class,String.class};
 	
-	private List<FichaInscripcion> datos;
+	private List<FichaInscripcion> datosFicha;
 	
 	public ModelInscripcionFich() {
 		super();
-		datos = new ArrayList<FichaInscripcion>();
+		datosFicha = new ArrayList<FichaInscripcion>();
 	}
 	
 	public ModelInscripcionFich(List<FichaInscripcion> datos) {
 		super();
 		if (datos == null)
-			this.datos = new ArrayList<FichaInscripcion>();
+			this.datosFicha = new ArrayList<FichaInscripcion>();
 		else
-			this.datos = datos;
+			this.datosFicha = datos;
 	}
 	
 	public int getColumnCount() {
@@ -38,7 +38,7 @@ public class ModelInscripcionFich extends AbstractTableModel {
 
 	
 	public int getRowCount() {
-		return datos.size();
+		return datosFicha.size();
 	}
 
 	public String getColumnName(int col) {
@@ -51,19 +51,19 @@ public class ModelInscripcionFich extends AbstractTableModel {
 	
 	public Object getValueAt(int row, int col) {
 		
-		FichaInscripcion dato = (FichaInscripcion) (datos.get(row));
+		FichaInscripcion datof = (FichaInscripcion) (datosFicha.get(row));
 		
 		switch(col) {
 		case 0:
-			return dato.getCosto();
+			return datof.getCosto();
 		case 1:
-			return dato.getEquipos().getNombre();
+			return datof.getEquipos().getNombre();
 		case 2:
-			return dato.getEquipos().getCapitan();
+			return datof.getEquipos().getCapitan();
 		case 3:
-			return dato.getEquipos().getJugadores().getNombre();
+			return datof.getEquipos().getJugadores().getNombre();
 		case 4:
-			return dato.getEquipos().getJugadores().getApellido();
+			return datof.getEquipos().getJugadores().getApellido();
 		default:
 			break;
 		}

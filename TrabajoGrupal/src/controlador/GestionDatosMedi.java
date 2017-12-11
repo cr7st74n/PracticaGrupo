@@ -33,16 +33,15 @@ public GestionDatosMedi() {
 	pacientes = new ArrayList<Paciente>();
 }
 
-public void newPais(String nombreMed,String turno,String hora,String nombrePa,String apellidoPa) throws IOException{
+public void newMedico(String nombreMed,String turno,String hora,String nombrePa,String apellidoPa) throws IOException{
 	Medico re=new Medico();
-re.setNombre(nombreMed);
+    re.setNombre(nombreMed);
 		
 	Consulta ar=new Consulta();
 	ar.setNumeroTur(turno);
 	ar.setHora(hora);
 	consultas.add(ar);
-	
-re.setConsultas(ar);
+	re.setConsultas(ar);
 
     Paciente au=new Paciente();
   au.setNombre(nombrePa);

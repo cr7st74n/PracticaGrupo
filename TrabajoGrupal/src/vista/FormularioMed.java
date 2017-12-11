@@ -25,7 +25,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controlador.GestionDatosMedi;
-import controlador.GestionDatosPais;
 
 public class FormularioMed extends JInternalFrame implements ActionListener {
 	
@@ -45,7 +44,7 @@ public class FormularioMed extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionRe());
+		tblinscripciones.setModel(new ModelInscripcionMed());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();
@@ -178,7 +177,7 @@ public class FormularioMed extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	
-	gm.newPais(nombreMed.getText().toString(), turno.getText().toString(), hora.getText().toString(),
+	gm.newMedico(nombreMed.getText().toString(), turno.getText().toString(), hora.getText().toString(),
 			nombreP.getText().toString(), edad.getText().toString());
 
 }

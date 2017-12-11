@@ -32,7 +32,7 @@ public class MiVentana extends JFrame implements ActionListener {
 	private GestionDatosPais gp;
 	private GestionDatosEmpr ge;
 	private GestionDatosAtle ga;
-	private GestionDatosFich gf;
+	private GestionDatosFich gficha;
 	private GestionDatosMedi gm;
 	JMenu mnInscripciones;
 	JMenuItem Formulario;
@@ -94,6 +94,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		BusquedaEstudiante = new JMenuItem("Ingresar Empresas");
 		BusquedaEstudiante.addActionListener(this);
 		BusquedaEstudiante.setActionCommand("mnEmp");
+		
 		mnCarrera = new JMenuItem("Listar empresas");
 		mnCarrera.addActionListener(this);
 		mnCarrera.setActionCommand("mnListarEm");
@@ -115,6 +116,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		ingresarFichas = new JMenuItem("Agregar Ficha");
 		ingresarFichas.addActionListener(this);
 		ingresarFichas.setActionCommand("mnAFic");
+		
 		listarfichas = new JMenuItem("Listar Fichas");
 		listarfichas.addActionListener(this);
 		listarfichas.setActionCommand("mnListarF");
@@ -125,6 +127,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		ingresarMedico = new JMenuItem("Agregar Medico");
 		ingresarMedico.addActionListener(this);
 		ingresarMedico.setActionCommand("mnAgM");
+		
 		listarMedico = new JMenuItem("Listar Medico");
 		listarMedico.addActionListener(this);
 		listarMedico.setActionCommand("mnListarM");
@@ -201,8 +204,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		FormularioMed m=new FormularioMed(gm);
 		LeerMedi lm = new LeerMedi(gm);
 		
-		FormularioFich F=new FormularioFich(gf);
-		LeerFich lf = new LeerFich(gf);
+		FormularioFich F=new FormularioFich(gficha);
+		LeerFich lf = new LeerFich(gficha);
 		
 		String comando = e.getActionCommand();
 		
@@ -240,6 +243,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			le.setVisible(true);
 			escritorio.add(le);
 			break;
+			
 		case "mnAgAt":
 			escritorio.removeAll();
 			a.setVisible(true);
@@ -251,6 +255,7 @@ public class MiVentana extends JFrame implements ActionListener {
 			la.setVisible(true);
 			escritorio.add(la);
 			break;
+			
 			//
 		case "mnAFic":
 			escritorio.removeAll();

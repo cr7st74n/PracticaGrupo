@@ -24,7 +24,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-
 import controlador.GestionDatosPais;
 
 public class FormularioPais extends JInternalFrame implements ActionListener {
@@ -45,7 +44,7 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionRe());
+		tblinscripciones.setModel(new ModelInscripcionP());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();

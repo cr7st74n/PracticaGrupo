@@ -45,7 +45,7 @@ public class FormularioEmp extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionRe());
+		tblinscripciones.setModel(new ModelInscripcionEmp());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();

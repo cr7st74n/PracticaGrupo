@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -45,7 +44,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionRe());
+		tblinscripciones.setModel(new ModelInscripcionFich());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();
@@ -150,14 +149,12 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 
 		switch (comando) {
 		case "btnGuardar":
-			
 			try {
 				guardarDatosR();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				System.out.println("Aki");
 				e1.printStackTrace();
 			}
-			
 			costo.setText("");
 			nombreEquipo.setText("");
 			nombreJugador.setText("");
@@ -172,7 +169,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	
-	gf.newAtleta(costo.getText().toString(), nombreEquipo.getText().toString(), capitan.getText().toString(),
+	gf.newFicha(costo.getText().toString(),nombreEquipo.getText().toString() , capitan.getText().toString(), 
 			nombreJugador.getText().toString(), apellidoJugador.getText().toString());
 
 }

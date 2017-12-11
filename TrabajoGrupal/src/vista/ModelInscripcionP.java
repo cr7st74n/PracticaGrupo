@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.Pais;
-import modelo.Revista;
+
 
 public class ModelInscripcionP extends AbstractTableModel {
 	
@@ -17,19 +17,19 @@ public class ModelInscripcionP extends AbstractTableModel {
 	public String[] columnas = {"Nombre Pais", "Idioma","Nombre Provincia ","Nombre Canton","Alcalde"};
 	public Class[] columnasTipos = {String.class, String.class,String.class,String.class,String.class};
 	
-	private List<Pais> datos;
+	private List<Pais> datospais;
 	
 	public ModelInscripcionP() {
 		super();
-		datos = new ArrayList<Pais>();
+		datospais = new ArrayList<Pais>();
 	}
 	
 	public ModelInscripcionP(List<Pais> datos) {
 		super();
 		if (datos == null)
-			this.datos = new ArrayList<Pais>();
+			this.datospais = new ArrayList<Pais>();
 		else
-			this.datos = datos;
+			this.datospais = datos;
 	}
 	
 	public int getColumnCount() {
@@ -38,7 +38,7 @@ public class ModelInscripcionP extends AbstractTableModel {
 
 	
 	public int getRowCount() {
-		return datos.size();
+		return datospais.size();
 	}
 
 	public String getColumnName(int col) {
@@ -51,7 +51,7 @@ public class ModelInscripcionP extends AbstractTableModel {
 	
 	public Object getValueAt(int row, int col) {
 		
-		Pais dato = (Pais) (datos.get(row));
+		Pais dato = (Pais) (datospais.get(row));
 		
 		switch(col) {
 		case 0:
