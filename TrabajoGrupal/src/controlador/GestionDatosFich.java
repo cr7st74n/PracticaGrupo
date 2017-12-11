@@ -8,20 +8,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import modelo.Jugador;
-import modelo.Competencia;
 import modelo.Equipo;
-import modelo.Equipo;
-import modelo.FichaInscripcion;
-import modelo.Jugador;
 import modelo.FichaInscripcion;
 
 public class GestionDatosFich {
 	private List<FichaInscripcion> fichas;
 	private List<Equipo> equipos;
 	private List<Jugador> jugadores;
-private String pathPersona="TrabajoGrupal/Datos/Revistas.txt";
+private String pathPersona="TrabajoGrupal/Datos/Ficha Inscripcion.txt";
 	
 
 public GestionDatosFich(List<FichaInscripcion> fichas, List<Equipo> equipos, List<Jugador> jugadores,
@@ -41,9 +36,11 @@ public GestionDatosFich() {
 }
 
 
-public void newRevista(String nombreR,String idioma,String titulo,String nombreAu,String apellidoAu) throws IOException{
+public void newFicha(String nombreR,String idioma,String titulo,String nombreAu,String apellidoAu) {
+	
 	FichaInscripcion re=new FichaInscripcion();
 	re.setCosto(nombreR);
+	fichas.add(re);
 	
 	Equipo au=new Equipo();
     au.setNombre(nombreAu);
@@ -57,21 +54,21 @@ public void newRevista(String nombreR,String idioma,String titulo,String nombreA
 	jugadores.add(ar);
 	au.setJugadores(ar);	
 	
-	fichas.add(re);
 	
-try{
-		
-		FileWriter file=new FileWriter(pathPersona,true);
-		BufferedWriter out=new BufferedWriter(file);
-		String registro=nombreR+";"+idioma+";"+titulo+";"+nombreAu+";"+apellidoAu;
-		
-		out.append(registro+"\n");
-		out.close();
-		file.close();
-		
-	}catch(IOException e){
-		e.printStackTrace();    
-	}
+	
+//try{
+//		
+//		FileWriter file=new FileWriter(pathPersona,true);
+//		BufferedWriter out=new BufferedWriter(file);
+//		String registro=nombreR+";"+idioma+";"+titulo+";"+nombreAu+";"+apellidoAu;
+//		
+//		out.append(registro+"\n");
+//		out.close();
+//		file.close();
+//		
+//	}catch(IOException e){
+//		e.printStackTrace();    
+//	}
 
 }
 

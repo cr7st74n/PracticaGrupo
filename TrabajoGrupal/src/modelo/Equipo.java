@@ -4,15 +4,18 @@ public class Equipo {
 private String nombre;
 private String capitan;
 private Jugador jugadores;
+
 public  Equipo () {
 	
 }
+
 public Equipo(String nombre, String capitan, Jugador jugadores) {
 	super();
 	this.nombre = nombre;
 	this.capitan = capitan;
 	this.jugadores = jugadores;
 }
+
 public String getNombre() {
 	return nombre;
 }
@@ -31,6 +34,7 @@ public Jugador getJugadores() {
 public void setJugadores(Jugador jugadores) {
 	this.jugadores = jugadores;
 }
+
 @Override
 public String toString() {
 	return "Equipo [nombre=" + nombre + ", capitan=" + capitan + ", jugadores=" + jugadores + "]";

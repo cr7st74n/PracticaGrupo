@@ -32,8 +32,8 @@ public class MiVentana extends JFrame implements ActionListener {
 	private GestionDatosPais gp;
 	private GestionDatosEmpr ge;
 	private GestionDatosAtle ga;
-	private GestionDatosFich gficha;
-	private GestionDatosMedi gm;
+	//private GestionDatosFich gficha;
+	//private GestionDatosMedi gm;
 	JMenu mnInscripciones;
 	JMenuItem Formulario;
 	JMenuItem listarInscripciones;
@@ -171,10 +171,12 @@ public class MiVentana extends JFrame implements ActionListener {
 		FormularioAtl a=new FormularioAtl(ga);
 		LeerAtle la = new LeerAtle(ga);
 		
+		GestionDatosMedi gm=new GestionDatosMedi();
 		FormularioMed m=new FormularioMed(gm);
 		LeerMedi lm = new LeerMedi(gm);
 		
-	FormularioFich F=new FormularioFich(gficha);
+		GestionDatosFich ficha=new GestionDatosFich();
+	FormularioFich F=new FormularioFich(ficha);
 //		LeerFich lf = new LeerFich(gficha);
 		
 		String comando = e.getActionCommand();

@@ -12,7 +12,6 @@ import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -22,13 +21,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
-
 import controlador.GestionDatosFich;
-import controlador.GestionDatosRevi;
 
 public class FormularioFich extends JInternalFrame implements ActionListener {
+	
 	private GestionDatosFich gf;
+	
 	private JTextField costo;
 	private JTextField nombreEquipo;
 	private JTextField capitan;
@@ -39,12 +37,11 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 	public FormularioFich(GestionDatosFich gf) {
 		this.gf = gf;
 		setSize(950, 700);
-		setVisible(true);
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionRe());
+		tblinscripciones.setModel(new ModelInscripcionFich());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();
@@ -102,8 +99,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 5;
-		//gb.gridwidth = 5;
-		gb.fill = 5;
+		gb.fill = 1;
 		nombreJug = new JTextField(20);
 		pnlIns.add(nombreJug, gb);
 
@@ -154,12 +150,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		switch (comando) {
 		case "btnGuardar":
 			
-			try {
-				guardarDatosR();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			guardarDatosR();
 			
 			costo.setText("");
 			nombreEquipo.setText("");
@@ -173,13 +164,18 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		}
 	}
 	
-public void guardarDatosR() throws IOException {
+public void guardarDatosR()  {
 	try {
-		int a = 2/(gf.buscarFicha(nombreEquipo.getText().toString()));
 		
-	gf.newRevista(costo.getText().toString(), nombreEquipo.getText().toString(), capitan.getText().toString(),
-			nombreJug.getText().toString(), apellidoJug.getText().toString());
-
+		int a = 2/(gf.buscarFicha(nombreEquipo.getText().toString()));
+		String costo1=costo.getText();
+		String nombreEquipo1=nombreEquipo.getText();
+		String capitan1=capitan.getText();
+		String nombreJug1=nombreJug.getText();
+		String apellidoJug1=apellidoJug.getText();
+		
+	gf.newFicha(costo1, nombreEquipo1, capitan1,nombreJug1, apellidoJug1);
+	
 	} catch (ArithmeticException e) {
 
 		JOptionPane.showMessageDialog(null, "Equipo ya registrado");
