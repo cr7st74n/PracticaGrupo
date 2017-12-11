@@ -11,6 +11,8 @@ import java.util.List;
 
 import modelo.Empleado;
 import modelo.Empresa;
+import modelo.Provincia;
+import modelo.Competencia;
 import modelo.Departamento;
 
 public class GestionDatosEmpr {
@@ -33,7 +35,7 @@ public GestionDatosEmpr() {
 	empleados = new ArrayList<Empleado>();
 }
 
-public void newPais(String nombreE,String presidente,String cajera,String nombreEm,String apellidoEm) throws IOException{
+public void newEmpresa(String nombreE,String presidente,String cajera,String nombreEm,String apellidoEm) throws IOException{
 	Empresa re=new Empresa();
     re.setNombre(nombreE);
     re.setPresidente(presidente);
@@ -90,6 +92,28 @@ public String leerArchivos() throws Exception {
 	
 	return null;
 }
+public int buscarEmpresa(String nombreEm){
+	
+	for (int i = 0; i < empresas.size(); i++) {
+		Empresa car = empresas.get(i);
+		Departamento dep = departamentos.get(i);
+		if (car.getNombre().equals(nombreEm)) {
+			
+					return 0;
+	}
+	}
+	return 1;
+}
+public String buscarEmpleado(String nombre,String apellido) {
+String valorC="tRue";
+		for (int i = 0; i < empleados.size(); i++) {
+			Empleado car = empleados.get(i);
+			if (car.getNombre().equals(nombre)&&car.getApellido().equals(apellido)) {
+				valorC = null;
+			}
+		}
+		return valorC;
+	}
 
 public List<Empresa> getEmpresas(){
 	return empresas;

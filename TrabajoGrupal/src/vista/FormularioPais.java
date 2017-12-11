@@ -25,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controlador.GestionDatosPais;
+import modelo.Provincia;
 
 public class FormularioPais extends JInternalFrame implements ActionListener {
 	
@@ -176,9 +177,22 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	
+	try {
+		String provi= gp.buscarProvincia(nombreProvincia.getText().toString());
+		int a = 2/(gp.buscarPais(nombrePais.getText().toString()));
+		
 	gp.newPais(nombrePais.getText().toString(), txtIdioma.getText().toString(), nombreProvincia.getText().toString(),
 			nombreCanton.getText().toString(), alcalde.getText().toString());
+	if (provi==null) {
 
+		JOptionPane.showMessageDialog(null, "Provincia ya registrada");
+
+	} 
+} catch (ArithmeticException e) {
+
+	JOptionPane.showMessageDialog(null, "EL pais ya fue registrado");
+
+}
 }
 
 public void cargarDatos(){

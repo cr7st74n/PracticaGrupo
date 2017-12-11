@@ -177,10 +177,18 @@ public class FormularioAtl extends JInternalFrame implements ActionListener {
 	}
 	
 public void guardarDatosR() throws IOException {
-	
-	ga.newAtleta(nombreAtl.getText().toString(), apellidoAtl.getText().toString(), edad.getText().toString(),
+	try {
+		int a = 2/(ga.buscarAtleta(numeroCompetencia.getText().toString()));
+		
+		ga.newAtleta(nombreAtl.getText().toString(), apellidoAtl.getText().toString(), edad.getText().toString(),
 			numeroCompetencia.getText().toString(), primerlugar.getText().toString());
+	
+	
+	} catch (ArithmeticException e) {
 
+		JOptionPane.showMessageDialog(null, "Competidor ya registrado o el numero ya esta ocupado");
+
+	}
 }
 
 public void cargarDatos(){

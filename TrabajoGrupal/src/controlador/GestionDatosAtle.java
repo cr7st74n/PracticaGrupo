@@ -89,7 +89,16 @@ public String leerArchivos() throws Exception {
 	
 	return null;
 }
-
+public int buscarAtleta(String numeroJug){
+	
+		for (int i = 0; i < competencias.size(); i++) {
+			Competencia car = competencias.get(i);
+			if (car.getNumero().equals(numeroJug)) {
+						return 0;
+			}
+		}
+		return 1;
+}
 public List<Atleta> getAtletas(){
 	return atletas;
 	

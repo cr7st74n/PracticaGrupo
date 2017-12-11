@@ -12,6 +12,7 @@ import java.util.List;
 import modelo.Paciente;
 import modelo.Medico;
 import modelo.Consulta;
+import modelo.Consulta;
 
 public class GestionDatosMedi {
 	private List<Medico> medicos;
@@ -93,5 +94,16 @@ public String leerArchivos() throws Exception {
 public List<Medico> getMedicos(){
 	return medicos;
 	
+}
+public int buscarConsulta(String numeroTurn,String hora){
+	
+	for (int i = 0; i < consultas.size(); i++) {
+		Consulta car = consultas.get(i);
+		if (car.getNumeroTur().equals(numeroTurn) && car.getHora().equals(hora)) {
+			
+					return 0;
+		}
+	}
+	return 1;
 }
 }

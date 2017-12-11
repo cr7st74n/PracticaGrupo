@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.FichaInscripcion;
-import modelo.Revista;
+
 
 public class ModelInscripcionFich extends AbstractTableModel {
 	

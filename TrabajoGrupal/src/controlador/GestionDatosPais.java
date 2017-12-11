@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Canton;
+
+import modelo.Competencia;
 import modelo.Pais;
 import modelo.Provincia;
 
@@ -89,6 +91,27 @@ public String leerArchivos() throws Exception {
 	
 	return null;
 }
+public int buscarPais(String pais){
+	
+	for (int i = 0; i < paises.size(); i++) {
+		Pais car = paises.get(i);
+		if (car.getNombre().equals(pais)) {
+					return 0;
+		}
+	}
+	return 1;
+}
+public String buscarProvincia(String nombre) {
+String valorC="tRue";
+		for (int i = 0; i < provincias.size(); i++) {
+			Provincia car = provincias.get(i);
+			if (car.getNombre().equals(nombre)) {
+				valorC = null;
+			}
+		}
+		return valorC;
+	}
+
 
 public List<Pais> getPais(){
 	return paises;

@@ -153,37 +153,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		
 		setJMenuBar(barMenu);
 		
-		//datos universiadaes a las que se puede inscribir
-				/*JPanel pnlDatos = new JPanel();
-				pnlDatos.setLayout(new GridBagLayout());
-				pnlDatos.setBorder(BorderFactory.createTitledBorder("Universidades"));
-				
-				GridBagConstraints gb = new GridBagConstraints();
-				gb.gridx = 0;
-				gb.gridy = 0;
-				pnlDatos.add(new JLabel("Universidad de Cuenca"), gb);
-				
-				gb = new GridBagConstraints();
-				gb.gridy = 1;
-				gb.gridx = 0;
-				pnlDatos.add(new JLabel("\n-Arquitectura"), gb);
-				
-				gb = new GridBagConstraints();
-				gb.gridy = 2;
-				gb.gridx = 0;
-				pnlDatos.add(new JLabel("-Medicina Veterinaria"), gb);
-				
-				gb = new GridBagConstraints();
-				gb.gridy = 3;
-				gb.gridx = 0;
-				pnlDatos.add(new JLabel("-Gastronomía"), gb);
-				
-				gb = new GridBagConstraints();
-				gb.gridy = 4;
-				gb.gridx = 0;
-				pnlDatos.add(new JLabel("-Economía"), gb);
-				
-				c.add(pnlDatos,BorderLayout.EAST);*/
+	
 	}
 	
 	@Override
@@ -204,8 +174,8 @@ public class MiVentana extends JFrame implements ActionListener {
 		FormularioMed m=new FormularioMed(gm);
 		LeerMedi lm = new LeerMedi(gm);
 		
-		FormularioFich F=new FormularioFich(gficha);
-		LeerFich lf = new LeerFich(gficha);
+	FormularioFich F=new FormularioFich(gficha);
+//		LeerFich lf = new LeerFich(gficha);
 		
 		String comando = e.getActionCommand();
 		
@@ -257,17 +227,17 @@ public class MiVentana extends JFrame implements ActionListener {
 			break;
 			
 			//
-		case "mnAFic":
+	case "mnAFic":
 			escritorio.removeAll();
 			F.setVisible(true);
 			escritorio.add(F);
 			break;
 			
-		case "mnListarF":
-			escritorio.removeAll();
-			lf.setVisible(true);
-			escritorio.add(lf);
-			break;
+//		case "mnListarF":
+//			escritorio.removeAll();
+//			lf.setVisible(true);
+//			escritorio.add(lf);
+//			break;
 			
 		case "mnAgM":
 			escritorio.removeAll();

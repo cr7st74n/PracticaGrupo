@@ -9,23 +9,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.FichaInscripcion;
-import modelo.Equipo;
 import modelo.Jugador;
+import modelo.Competencia;
+import modelo.Equipo;
+import modelo.Equipo;
+import modelo.FichaInscripcion;
+import modelo.Jugador;
+import modelo.FichaInscripcion;
 
 public class GestionDatosFich {
 	private List<FichaInscripcion> fichas;
 	private List<Equipo> equipos;
 	private List<Jugador> jugadores;
-private String pathPersona="C:/Users/edwin/git/PracticaGrupo/TrabajoGrupal/Datos/Ficha Inscripcion.txt";
+private String pathPersona="TrabajoGrupal/Datos/Revistas.txt";
+	
 
-public GestionDatosFich(List<FichaInscripcion> fichas, List<Equipo> equipos, List<Jugador> jugadores, String pathPersona) {
+public GestionDatosFich(List<FichaInscripcion> fichas, List<Equipo> equipos, List<Jugador> jugadores,
+		String pathPersona) {
 	super();
 	this.fichas = fichas;
 	this.equipos = equipos;
 	this.jugadores = jugadores;
 	this.pathPersona = pathPersona;
 }
+
 
 public GestionDatosFich() {
 	fichas = new ArrayList<FichaInscripcion>();
@@ -34,24 +41,21 @@ public GestionDatosFich() {
 }
 
 
-public void newFicha(String costo,String nombreEq,String nombreCap,String apellidoJu,String nombreJu) throws IOException{
+public void newRevista(String nombreR,String idioma,String titulo,String nombreAu,String apellidoAu) throws IOException{
+	FichaInscripcion re=new FichaInscripcion();
+	re.setCosto(nombreR);
 	
-	FichaInscripcion re=new FichaInscripcion();	
-  re.setCosto(costo);
+	Equipo au=new Equipo();
+    au.setNombre(nombreAu);
+    au.setCapitan(titulo);
+    equipos.add(au);
+	re.setEquipos(au);
 	
-		
-	Equipo ar=new Equipo();
-ar.setNombre(nombreEq);
-ar.setCapitan(nombreCap);
-	equipos.add(ar);
-  re.setEquipos(ar);
-
-    Jugador au=new Jugador();
-au.setNombre(nombreJu);
-au.setApellido(apellidoJu);
-
-    jugadores.add(au);
-	ar.setJugadores(au);
+	Jugador ar=new Jugador();
+	ar.setApellido(nombreAu);
+	ar.setApellido(apellidoAu);
+	jugadores.add(ar);
+	au.setJugadores(ar);	
 	
 	fichas.add(re);
 	
@@ -59,14 +63,13 @@ try{
 		
 		FileWriter file=new FileWriter(pathPersona,true);
 		BufferedWriter out=new BufferedWriter(file);
-		String registro=costo+";"+nombreEq+";"+nombreCap+";"+nombreJu+";"+apellidoJu;
+		String registro=nombreR+";"+idioma+";"+titulo+";"+nombreAu+";"+apellidoAu;
 		
 		out.append(registro+"\n");
 		out.close();
 		file.close();
 		
 	}catch(IOException e){
-		
 		e.printStackTrace();    
 	}
 
@@ -93,6 +96,16 @@ public String leerArchivos() throws Exception {
 		}
 	
 	return null;
+}
+public int buscarFicha(String nombreE){
+	
+	for (int i = 0; i < equipos.size(); i++) {
+		Equipo car = equipos.get(i);
+		if (car.getNombre().equals(nombreE)) {
+					return 0;
+		}
+	}
+	return 1;
 }
 
 public List<FichaInscripcion> getFichas(){

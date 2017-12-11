@@ -170,10 +170,22 @@ public class FormularioEmp extends JInternalFrame implements ActionListener {
 	}
 	
 public void guardarDatosR() throws IOException {
-	
-	ge.newPais(nombreE.getText().toString(), presidente.getText().toString(), cajera.getText().toString(),
+	try {
+		String emp=ge.buscarEmpleado(nombreTr.getText().toString(), apellidoTr.getText().toString());
+		int a = 2/(ge.buscarEmpresa(nombreE.getText().toString()));
+		
+	ge.newEmpresa(nombreE.getText().toString(), presidente.getText().toString(), cajera.getText().toString(),
 			nombreTr.getText().toString(), apellidoTr.getText().toString());
+	if (emp==null) {
 
+		JOptionPane.showMessageDialog(null, "El empleado ya fue registado");
+
+	} 
+	} catch (ArithmeticException e) {
+
+		JOptionPane.showMessageDialog(null, "La Empresa ya fue registada");
+
+	}
 }
 
 public void cargarDatos(){

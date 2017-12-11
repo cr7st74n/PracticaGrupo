@@ -25,15 +25,15 @@ import javax.swing.JTextField;
 
 
 import controlador.GestionDatosFich;
+import controlador.GestionDatosRevi;
 
 public class FormularioFich extends JInternalFrame implements ActionListener {
-	
 	private GestionDatosFich gf;
 	private JTextField costo;
 	private JTextField nombreEquipo;
 	private JTextField capitan;
-	private JTextField nombreJugador;
-	private JTextField apellidoJugador;
+	private JTextField nombreJug;
+	private JTextField apellidoJug;
 	private JTable tblinscripciones;
 
 	public FormularioFich(GestionDatosFich gf) {
@@ -44,7 +44,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		c.setLayout(new BorderLayout());
 		
 		tblinscripciones = new JTable();
-		tblinscripciones.setModel(new ModelInscripcionFich());
+		tblinscripciones.setModel(new ModelInscripcionRe());
 		JScrollPane scrollinscripciones = new JScrollPane(tblinscripciones);
 		
 		JPanel scrollPane = new JPanel();
@@ -58,7 +58,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		GridBagConstraints gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 0;
-		pnlIns.add(new JLabel("Costo Inscripcion"), gb);
+		pnlIns.add(new JLabel("Costo inscripcion"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -71,7 +71,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 1;
-		pnlIns.add(new JLabel("Nombre del Equipo"), gb);
+		pnlIns.add(new JLabel("Nombre equipo"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -80,45 +80,49 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		gb.fill = 2;
 		nombreEquipo = new JTextField(20);
 		pnlIns.add(nombreEquipo, gb);
-		
+
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 2;
-		pnlIns.add(new JLabel("Nombre Jugador"), gb);
+		pnlIns.add(new JLabel("Nombre capitan"), gb);
+
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 2;
-		//gb.gridwidth = 5;
-		gb.fill = 5;
-		nombreJugador = new JTextField(20);
-		pnlIns.add(nombreJugador, gb);		
-
-		gb = new GridBagConstraints();
-		gb.gridx = 0;
-		gb.gridy = 5;
-		pnlIns.add(new JLabel("Apellido Jugador"), gb);
-
-		
-
-		gb = new GridBagConstraints();
-		gb.gridx = 1;
-		gb.gridy = 5;
-		gb.fill = 1;
-		apellidoJugador = new JTextField(20);
-		pnlIns.add(apellidoJugador, gb);
-		
-		gb = new GridBagConstraints();
-		gb.gridx = 0;
-		gb.gridy = 7;
-		pnlIns.add(new JLabel("Nombre del Capitan"), gb);
-
-		gb = new GridBagConstraints();
-		gb.gridx = 1;
-		gb.gridy = 7;
 		gb.fill = 1;
 		capitan = new JTextField(20);
 		pnlIns.add(capitan, gb);
+		
+		gb = new GridBagConstraints();
+		gb.gridx = 0;
+		gb.gridy = 5;
+		pnlIns.add(new JLabel("Nombre del Jugador "), gb);
+
+		gb = new GridBagConstraints();
+		gb.gridx = 1;
+		gb.gridy = 5;
+		//gb.gridwidth = 5;
+		gb.fill = 5;
+		nombreJug = new JTextField(20);
+		pnlIns.add(nombreJug, gb);
+
+		
+
+		gb = new GridBagConstraints();
+		gb.gridx = 0;
+		gb.gridy = 7;
+		pnlIns.add(new JLabel("Apellido del Jugador"), gb);
+
+		
+
+		gb = new GridBagConstraints();
+		gb.gridx = 1;
+		gb.gridy = 7;
+		gb.fill = 1;
+		apellidoJug = new JTextField(20);
+		pnlIns.add(apellidoJug, gb);
+
 		
 		
 
@@ -149,17 +153,19 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 
 		switch (comando) {
 		case "btnGuardar":
+			
 			try {
 				guardarDatosR();
 			} catch (IOException e1) {
-				System.out.println("Aki");
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 			costo.setText("");
 			nombreEquipo.setText("");
-			nombreJugador.setText("");
+			nombreJug.setText("");
 			capitan.setText("");
-			apellidoJugador.setText("");
+			apellidoJug.setText("");
 			cargarDatos();
 			break;
 		default:
@@ -168,10 +174,17 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 	}
 	
 public void guardarDatosR() throws IOException {
-	
-	gf.newFicha(costo.getText().toString(),nombreEquipo.getText().toString() , capitan.getText().toString(), 
-			nombreJugador.getText().toString(), apellidoJugador.getText().toString());
+	try {
+		int a = 2/(gf.buscarFicha(nombreEquipo.getText().toString()));
+		
+	gf.newRevista(costo.getText().toString(), nombreEquipo.getText().toString(), capitan.getText().toString(),
+			nombreJug.getText().toString(), apellidoJug.getText().toString());
 
+	} catch (ArithmeticException e) {
+
+		JOptionPane.showMessageDialog(null, "Equipo ya registrado");
+
+	}
 }
 
 public void cargarDatos(){
@@ -179,4 +192,5 @@ public void cargarDatos(){
 	tblinscripciones.setModel(new ModelInscripcionFich(gf.getFichas()));
 }	
 
+	
 }

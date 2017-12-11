@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controlador.GestionDatosAtle;
 import controlador.GestionDatosFich;
 import controlador.GestionDatosPais;
 import controlador.GestionDatosRevi;
@@ -61,7 +62,7 @@ public class LeerFich extends JInternalFrame implements ActionListener {
 
 	}
 
-	
+
 
 	public void cargar() throws Exception {
 
@@ -90,5 +91,4 @@ public class LeerFich extends JInternalFrame implements ActionListener {
 			break;
 		}
 	}
-
 }

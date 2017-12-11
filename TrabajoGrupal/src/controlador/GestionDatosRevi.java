@@ -12,6 +12,8 @@ import java.util.List;
 
 import modelo.Articulo;
 import modelo.Autor;
+import modelo.Pais;
+import modelo.Provincia;
 import modelo.Revista;
 
 public class GestionDatosRevi {
@@ -93,7 +95,26 @@ public String leerArchivos() throws Exception {
 	
 	return null;
 }
-
+public int buscarRevista(String revistaN){
+	
+	for (int i = 0; i < revistas.size(); i++) {
+		Revista car = revistas.get(i);
+		if (car.getNombre().equals(revistaN)) {
+					return 0;
+		}
+	}
+	return 1;
+}
+public String buscarArticulo(String nombreAr) {
+String valorC="tRue";
+		for (int i = 0; i < articulos.size(); i++) {
+			Articulo ar = articulos.get(i);
+			if (ar.getTitulo().equals(nombreAr)) {
+				valorC = null;
+			}
+		}
+		return valorC;
+	}
 public List<Revista> getRevista(){
 	return revistas;
 	
