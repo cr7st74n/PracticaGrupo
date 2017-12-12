@@ -56,9 +56,9 @@ try{
 		
 		FileWriter file=new FileWriter(pathPersona,true);
 		BufferedWriter out=new BufferedWriter(file);
-		String registro=nombreMed+";"+turno+";"+hora+";"+nombrePa+";"+apellidoPa;
+		String registro=nombreMed+" ; "+turno+" ; "+hora+" ; "+nombrePa+" ; "+apellidoPa+" | ";
 		
-		out.append(registro+"\n");
+		out.append(registro);
 		out.close();
 		file.close();
 		
@@ -99,11 +99,22 @@ public int buscarConsulta(String numeroTurn,String hora){
 	
 	for (int i = 0; i < consultas.size(); i++) {
 		Consulta car = consultas.get(i);
-		if (car.getNumeroTur().equals(numeroTurn) && car.getHora().equals(hora)) {
+		if (car.getNumeroTur().equals(numeroTurn) || car.getHora().equals(hora)) {
 			
 					return 0;
 		}
 	}
 	return 1;
+}
+public String buscarPaciente(String nombreP){
+	String g =" ";
+	for (int i = 0; i < pacientes.size(); i++) {
+		Paciente car = pacientes.get(i);
+		if (car.getNombre().equals(nombreP)) {
+			
+				g= null;
+		}
+	}
+	return g;
 }
 }

@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controlador.GestionDatosAtle;
@@ -69,7 +70,7 @@ public class MiVentana extends JFrame implements ActionListener {
 	
 	private void initComponents() {
 
-		setSize(950,660);
+		setSize(965,660);
 		setTitle("Gestion de Datos");
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
@@ -153,7 +154,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		
 		setJMenuBar(barMenu);
 		
-	
+		JOptionPane.showMessageDialog(null, "* Bienvenido estimado Usuario*\n |al siguiente programa|");
 	}
 	
 	@Override
@@ -177,7 +178,7 @@ public class MiVentana extends JFrame implements ActionListener {
 		
 		GestionDatosFich ficha=new GestionDatosFich();
 	FormularioFich F=new FormularioFich(ficha);
-//		LeerFich lf = new LeerFich(gficha);
+	LeerFich lf = new LeerFich(ficha);
 		
 		String comando = e.getActionCommand();
 		
@@ -235,11 +236,11 @@ public class MiVentana extends JFrame implements ActionListener {
 			escritorio.add(F);
 			break;
 			
-//		case "mnListarF":
-//			escritorio.removeAll();
-//			lf.setVisible(true);
-//			escritorio.add(lf);
-//			break;
+		case "mnListarF":
+			escritorio.removeAll();
+			lf.setVisible(true);
+			escritorio.add(lf);
+			break;
 			
 		case "mnAgM":
 			escritorio.removeAll();

@@ -81,20 +81,20 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 2;
-		pnlIns.add(new JLabel("Nombre capitan"), gb);
+		pnlIns.add(new JLabel("(Nombres y Apellidos) Capitan"), gb);
 
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 2;
 		gb.fill = 1;
-		capitan = new JTextField(20);
+		capitan = new JTextField(40);
 		pnlIns.add(capitan, gb);
 		
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 5;
-		pnlIns.add(new JLabel("Nombre del Jugador "), gb);
+		pnlIns.add(new JLabel("Nombres del Jugador"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -108,7 +108,7 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 7;
-		pnlIns.add(new JLabel("Apellido del Jugador"), gb);
+		pnlIns.add(new JLabel("Apellidos del Jugador"), gb);
 
 		
 
@@ -165,25 +165,32 @@ public class FormularioFich extends JInternalFrame implements ActionListener {
 	}
 	
 public void guardarDatosR()  {
-	try {
-		
-		int a = 2/(gf.buscarFicha(nombreEquipo.getText().toString()));
-		String costo1=costo.getText();
-		String nombreEquipo1=nombreEquipo.getText();
-		String capitan1=capitan.getText();
-		String nombreJug1=nombreJug.getText();
-		String apellidoJug1=apellidoJug.getText();
-		
-	gf.newFicha(costo1, nombreEquipo1, capitan1,nombreJug1, apellidoJug1);
 	
-	} catch (ArithmeticException e) {
+			String costo1=costo.getText().toString().toLowerCase();
+			String nombreEquipo1=nombreEquipo.getText().toString().toLowerCase();
+			String capitan1=capitan.getText().toString().toLowerCase();
+			String nombreJug1=nombreJug.getText().toString().toLowerCase();
+			String apellidoJug1=apellidoJug.getText().toString().toLowerCase();
 
-		JOptionPane.showMessageDialog(null, "Equipo ya registrado");
+		try {
 
+			int a = 2 / (gf.buscarFicha(nombreEquipo.getText().toString().toLowerCase()));
+			String ficha = gf.buscarCapitan(capitan1);
+			
+			if (ficha == null) {
+				JOptionPane.showMessageDialog(null, "Capitan ya registrado en otro equipo");
+			}else if(ficha != null && a==2){
+				gf.newFicha(costo1, nombreEquipo1, capitan1, nombreJug1, apellidoJug1);
+			}
+
+		} catch (ArithmeticException e) {
+
+			JOptionPane.showMessageDialog(null, "Equipo ya registrado");
+
+		}
 	}
-}
 
-public void cargarDatos(){
+	public void cargarDatos() {
 	
 	tblinscripciones.setModel(new ModelInscripcionFich(gf.getFichas()));
 }	

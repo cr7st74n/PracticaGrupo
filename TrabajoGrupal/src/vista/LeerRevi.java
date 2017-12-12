@@ -35,7 +35,7 @@ public class LeerRevi extends JInternalFrame implements ActionListener {
 	public LeerRevi(GestionDatosRevi gd) {
 
 		this.gd = gd;
-		setSize(750, 400);
+		setSize(950, 400);
 		
 		
 		Container c = getContentPane();
@@ -45,7 +45,7 @@ public class LeerRevi extends JInternalFrame implements ActionListener {
 
 		
 
-		txtaInscripciones = new JTextArea(50, 50);
+		txtaInscripciones = new JTextArea(80, 80);
 		JPanel pnlBusqueda = new JPanel();
 		pnlBusqueda.add(txtaInscripciones);
 

@@ -85,7 +85,7 @@ public class FormularioEmp extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 2;
-		pnlIns.add(new JLabel("Nombre del Trabajador"), gb);
+		pnlIns.add(new JLabel("Nombres del Trabajador(Guardia)"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -98,7 +98,7 @@ public class FormularioEmp extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 5;
-		pnlIns.add(new JLabel("Apellido del Trabajador"), gb);
+		pnlIns.add(new JLabel("Apellidos del Trabajador(Guardia)"), gb);
 
 		
 
@@ -171,14 +171,15 @@ public class FormularioEmp extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	try {
-		String emp=ge.buscarEmpleado(nombreTr.getText().toString(), apellidoTr.getText().toString());
-		int a = 2/(ge.buscarEmpresa(nombreE.getText().toString()));
-		
-	ge.newEmpresa(nombreE.getText().toString(), presidente.getText().toString(), cajera.getText().toString(),
-			nombreTr.getText().toString(), apellidoTr.getText().toString());
+		String emp=ge.buscarEmpleado(nombreTr.getText().toString().toLowerCase(), apellidoTr.getText().toString().toLowerCase());
+		int a = 2/(ge.buscarEmpresa(nombreE.getText().toString().toLowerCase()));
+		if(emp != null && a==2){
+	ge.newEmpresa(nombreE.getText().toString().toLowerCase(), presidente.getText().toString().toLowerCase(), cajera.getText().toString().toLowerCase(),
+			nombreTr.getText().toString().toLowerCase(), apellidoTr.getText().toString().toLowerCase());
+		}
 	if (emp==null) {
 
-		JOptionPane.showMessageDialog(null, "El empleado ya fue registado");
+		JOptionPane.showMessageDialog(null, "El empleado ya fue registado en otra empresa");
 
 	} 
 	} catch (ArithmeticException e) {

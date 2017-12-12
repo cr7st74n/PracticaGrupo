@@ -58,9 +58,9 @@ try{
 		
 		FileWriter file=new FileWriter(pathPersona,true);
 		BufferedWriter out=new BufferedWriter(file);
-		String registro=nombreE+";"+presidente+";"+cajera+";"+nombreEm+";"+apellidoEm;
+		String registro=nombreE+" ; "+presidente+" ; "+cajera+" ; "+nombreEm+" ; "+apellidoEm+" | ";
 		
-		out.append(registro+"\n");
+		out.append(registro);
 		out.close();
 		file.close();
 		

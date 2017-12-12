@@ -20,12 +20,8 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import controlador.GestionDatosAtle;
-import controlador.GestionDatosFich;
-import controlador.GestionDatosPais;
-import controlador.GestionDatosRevi;
-import modelo.Revista;
 
+import controlador.GestionDatosFich;
 
 public class LeerFich extends JInternalFrame implements ActionListener {
 
@@ -66,16 +62,10 @@ public class LeerFich extends JInternalFrame implements ActionListener {
 
 	public void cargar() throws Exception {
 
-	
-		
-		
 			txtaInscripciones.setText(gf.leerArchivos().toString());
-		
-
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
 		String comando = e.getActionCommand();
 		switch (comando) {
 		case "btnCargar":

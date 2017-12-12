@@ -49,26 +49,26 @@ public void newFicha(String nombreR,String idioma,String titulo,String nombreAu,
 	re.setEquipos(au);
 	
 	Jugador ar=new Jugador();
-	ar.setApellido(nombreAu);
+	ar.setNombre(nombreAu);
 	ar.setApellido(apellidoAu);
 	jugadores.add(ar);
 	au.setJugadores(ar);	
 	
 	
 	
-//try{
-//		
-//		FileWriter file=new FileWriter(pathPersona,true);
-//		BufferedWriter out=new BufferedWriter(file);
-//		String registro=nombreR+";"+idioma+";"+titulo+";"+nombreAu+";"+apellidoAu;
-//		
-//		out.append(registro+"\n");
-//		out.close();
-//		file.close();
-//		
-//	}catch(IOException e){
-//		e.printStackTrace();    
-//	}
+try{
+		
+		FileWriter file=new FileWriter(pathPersona,true);
+		BufferedWriter out=new BufferedWriter(file);
+		String registro=nombreR+" ; "+idioma+" ; "+titulo+" ; "+nombreAu+" ; "+apellidoAu+" | ";
+		
+		out.append(registro);
+		out.close();
+		file.close();
+		
+	}catch(IOException e){
+		e.printStackTrace();    
+	}
 
 }
 
@@ -103,6 +103,16 @@ public int buscarFicha(String nombreE){
 		}
 	}
 	return 1;
+}
+public String buscarCapitan(String nombreC){
+	String h=".";
+	for (int i = 0; i < equipos.size(); i++) {
+		Equipo car = equipos.get(i);
+		if (car.getNombre().equals(nombreC)) {
+					 h=null;
+		}
+	}
+	return h;
 }
 
 public List<FichaInscripcion> getFichas(){

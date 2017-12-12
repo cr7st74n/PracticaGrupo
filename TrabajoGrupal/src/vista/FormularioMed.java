@@ -84,7 +84,7 @@ public class FormularioMed extends JInternalFrame implements ActionListener {
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 2;
-		pnlIns.add(new JLabel("Nombre del paciente"), gb);
+		pnlIns.add(new JLabel("Nombres y Apellidos del paciente"), gb);
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -177,13 +177,17 @@ public class FormularioMed extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	try {
-		int a = 2/(gm.buscarConsulta(turno.getText().toString(),hora.getText().toString()));
-		
-	gm.newMedico(nombreMed.getText().toString(), turno.getText().toString(), hora.getText().toString(),
-			nombreP.getText().toString(), edad.getText().toString());
-	} catch (ArithmeticException e) {
+		int a = 2/(gm.buscarConsulta(turno.getText().toString().toLowerCase(),hora.getText().toString().toLowerCase()));
+		String pas=gm.buscarPaciente(nombreP.getText().toString().toLowerCase());
+		if(a==2 && pas!=null){
+	gm.newMedico(nombreMed.getText().toString().toLowerCase(), turno.getText().toString().toLowerCase(), hora.getText().toString().toLowerCase(),
+			nombreP.getText().toString().toLowerCase(), edad.getText().toString().toLowerCase());
+		}else if(pas ==null){
+			JOptionPane.showMessageDialog(null, "Pasiente ya registrado ");
+		}
+		} catch (ArithmeticException e) {
 
-		JOptionPane.showMessageDialog(null, "Pasiente ya registrado (Contiene mismo caracteres de hora y turno)");
+		JOptionPane.showMessageDialog(null, "Un pasiente ya fue registrado (Contiene mismo caracteres de hora o turno)");
 
 	}
 }

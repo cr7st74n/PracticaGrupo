@@ -57,9 +57,9 @@ try{
 		
 		FileWriter file=new FileWriter(pathPersona,true);
 		BufferedWriter out=new BufferedWriter(file);
-		String registro=pais+";"+idioma+";"+provincia+";"+canton+";"+alcalde;
+		String registro=pais+" ; "+idioma+" ; "+provincia+" ; "+canton+" ; "+alcalde+" | ";
 		
-		out.append(registro+"\n");
+		out.append(registro);
 		out.close();
 		file.close();
 		
@@ -91,27 +91,42 @@ public String leerArchivos() throws Exception {
 	
 	return null;
 }
-public int buscarPais(String pais){
-	
-	for (int i = 0; i < paises.size(); i++) {
-		Pais car = paises.get(i);
-		if (car.getNombre().equals(pais)) {
-					return 0;
-		}
-	}
-	return 1;
-}
-public String buscarProvincia(String nombre) {
-String valorC="tRue";
-		for (int i = 0; i < provincias.size(); i++) {
-			Provincia car = provincias.get(i);
+
+
+public int buscarProvincia(String nombrep,String nombre,String nombreC) {
+int valorC = 0;
+for (int i = 0; i < paises.size(); i++) {
+	Pais pais = paises.get(i);
+	if (pais.getNombre().equals(nombrep)) {
+		for (int i1 = 0; i1 < provincias.size(); i1++) {
+			Provincia car = provincias.get(i1);
 			if (car.getNombre().equals(nombre)) {
-				valorC = null;
-			}
+				
+				return valorC = 0;
+		
+				}
 		}
-		return valorC;
+   }
+}
+
+		return valorC=1;
 	}
 
+	public String buscarCanton(String nombrep, String nombre, String nombreC) {
+		String valorC = "tRue";
+		for (int i1 = 0; i1 < paises.size(); i1++) {
+			Pais pais = paises.get(i1);
+			
+					for (int i = 0; i < cantones.size(); i++) {
+						Canton canton = cantones.get(i);
+						if (canton.getNombre().equals(nombreC)) {
+							valorC = null;
+						}
+					}
+		}
+		return valorC;
+
+	}
 
 public List<Pais> getPais(){
 	return paises;

@@ -110,13 +110,10 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 		pnlIns.add(nombreCanton, gb);
 
 		
-
 		gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 7;
 		pnlIns.add(new JLabel("Nombre del alcalde del canton"), gb);
-
-		
 
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
@@ -125,29 +122,25 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 		alcalde = new JTextField(20);
 		pnlIns.add(alcalde, gb);
 
-		
-		
-
 		JPanel pnlBot = new JPanel();
 		JButton btnGuardar = new JButton("Guardar");
-		
+
 		btnGuardar.addActionListener(this);
 		btnGuardar.setActionCommand("btnGuardar");
-		
+
 		gb = new GridBagConstraints();
 		gb.gridx = 1;
 		gb.gridy = 9;
 		gb.fill = 1;
 		pnlIns.add(btnGuardar, gb);
-		
-		//pnlBot.add(btnGuardar);
+
+		// pnlBot.add(btnGuardar);
 		pnlIns.add(pnlBot);
 		c.add(pnlIns, BorderLayout.CENTER);
 		c.add(scrollPane, BorderLayout.SOUTH);
 
 	}
 
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -155,14 +148,14 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 
 		switch (comando) {
 		case "btnGuardar":
-			
+
 			try {
 				guardarDatosR();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			nombrePais.setText("");
 			txtIdioma.setText("");
 			nombreCanton.setText("");
@@ -174,30 +167,43 @@ public class FormularioPais extends JInternalFrame implements ActionListener {
 			break;
 		}
 	}
-	
-public void guardarDatosR() throws IOException {
-	
-	try {
-		String provi= gp.buscarProvincia(nombreProvincia.getText().toString());
-		int a = 2/(gp.buscarPais(nombrePais.getText().toString()));
-		
-	gp.newPais(nombrePais.getText().toString(), txtIdioma.getText().toString(), nombreProvincia.getText().toString(),
-			nombreCanton.getText().toString(), alcalde.getText().toString());
-	if (provi==null) {
 
-		JOptionPane.showMessageDialog(null, "Provincia ya registrada");
+	public void guardarDatosR() throws IOException {
+		String a = null;
+		int provi = 0;
+		try {
+			 provi = 4 / (gp.buscarProvincia(nombrePais.getText().toString().toLowerCase(), nombreProvincia.getText().toLowerCase(),nombreCanton.getText().toString().toLowerCase()));
 
-	} 
-} catch (ArithmeticException e) {
+			 a = gp.buscarCanton(nombrePais.getText().toString().toLowerCase(), nombreProvincia.getText().toLowerCase(),
+					nombreCanton.getText().toString().toLowerCase());
 
-	JOptionPane.showMessageDialog(null, "EL pais ya fue registrado");
+			
+			if (provi == 4 && a != null) {
+				gp.newPais(nombrePais.getText().toString().toLowerCase(), txtIdioma.getText().toString().toLowerCase(),
+						nombreProvincia.getText().toString().toLowerCase(), nombreCanton.getText().toString().toLowerCase(),
+						alcalde.getText().toString().toLowerCase());
+			}
+			
+			if (a == null) {
 
-}
-}
+				JOptionPane.showMessageDialog(null, "Canton ya registrado en una provincia de este pais");
+			}
+			
+		} catch (ArithmeticException e) {
 
-public void cargarDatos(){
-	
-	tblinscripciones.setModel(new ModelInscripcionP(gp.getPais()));
-}	
+			JOptionPane.showMessageDialog(null, "Provincia ya registrada en este pais");
+			
+
+		} catch (IOException ei) {
+
+			JOptionPane.showMessageDialog(null, "Canton ya registrado en una provincia de este pais");
+		}
+
+	}
+
+	public void cargarDatos() {
+
+		tblinscripciones.setModel(new ModelInscripcionP(gp.getPais()));
+	}
 
 }

@@ -176,11 +176,11 @@ public class FormularioRevi extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	try {
-		String art= gd.buscarArticulo(txtTarticulo.getText().toString());
-		int a = 2/(gd.buscarRevista(txtNombreR.getText().toString()));
+		String art= gd.buscarArticulo(txtTarticulo.getText().toString().toLowerCase());
+		int a = 2/(gd.buscarRevista(txtNombreR.getText().toString().toLowerCase()));
 		
-	gd.newRevista(txtNombreR.getText().toString(), txtIdioma.getText().toString(), txtTarticulo.getText().toString(),
-			txtNombreAu.getText().toString(), txtApellidoAu.getText().toString());
+	gd.newRevista(txtNombreR.getText().toString().toLowerCase(), txtIdioma.getText().toString().toLowerCase(), txtTarticulo.getText().toString().toLowerCase(),
+			txtNombreAu.getText().toString().toLowerCase(), txtApellidoAu.getText().toString().toLowerCase());
 	if (art==null) {
 
 		JOptionPane.showMessageDialog(null, "Articulo ya registrado");

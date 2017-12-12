@@ -178,10 +178,10 @@ public class FormularioAtl extends JInternalFrame implements ActionListener {
 	
 public void guardarDatosR() throws IOException {
 	try {
-		int a = 2/(ga.buscarAtleta(numeroCompetencia.getText().toString()));
+		int a = 2/(ga.buscarAtleta(numeroCompetencia.getText().toString().toLowerCase()));
 		
-		ga.newAtleta(nombreAtl.getText().toString(), apellidoAtl.getText().toString(), edad.getText().toString(),
-			numeroCompetencia.getText().toString(), primerlugar.getText().toString());
+		ga.newAtleta(nombreAtl.getText().toString().toLowerCase(), apellidoAtl.getText().toString().toLowerCase(), edad.getText().toString().toLowerCase(),
+			numeroCompetencia.getText().toString().toLowerCase(), primerlugar.getText().toString().toLowerCase());
 	
 	
 	} catch (ArithmeticException e) {
