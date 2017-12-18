@@ -36,15 +36,15 @@ public GestionDatosFich() {
 }
 
 
-public void newFicha(String nombreR,String idioma,String titulo,String nombreAu,String apellidoAu) {
+public void newFicha(String nombreR,String nomeq,String capit,String nombreAu,String apellidoAu) {
 	
 	FichaInscripcion re=new FichaInscripcion();
 	re.setCosto(nombreR);
 	fichas.add(re);
 	
 	Equipo au=new Equipo();
-    au.setNombre(nombreAu);
-    au.setCapitan(titulo);
+    au.setNombre(nomeq);
+    au.setCapitan(capit);
     equipos.add(au);
 	re.setEquipos(au);
 	
@@ -60,7 +60,7 @@ try{
 		
 		FileWriter file=new FileWriter(pathPersona,true);
 		BufferedWriter out=new BufferedWriter(file);
-		String registro=nombreR+" ; "+idioma+" ; "+titulo+" ; "+nombreAu+" ; "+apellidoAu+" | ";
+		String registro=nombreR+" ; "+nomeq+" ; "+capit+" ; "+nombreAu+" ; "+apellidoAu+" | ";
 		
 		out.append(registro);
 		out.close();
